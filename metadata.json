@@ -1,0 +1,6 @@
+{
+  "name": "DocuMind AI",
+  "description": "Your Documents. Your Knowledge. One Intelligent Assistant. A browser-powered RAG PDF chatbot with semantic search, verified page citations, and study tools.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,157 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --dm-bg: #FFFFFF;
+  --dm-panel: #F7F8FA;
+  --dm-raised: #EFF1F5;
+  --dm-raised-hover: #E6E9F0;
+  --dm-border: #E5E7EB;
+  --dm-border-strong: #D1D5DB;
+  --dm-text: #111827;
+  --dm-text-secondary: #525866;
+  --dm-text-muted: #7B818E;
+  --dm-accent: #5B6CFF;
+  --dm-accent-hover: #4A5BF0;
+  --dm-accent-fg: #FFFFFF;
+  --dm-accent-soft: rgba(91, 108, 255, 0.10);
+  --dm-success: #16A34A;
+  --dm-success-soft: rgba(22, 163, 74, 0.10);
+  --dm-error: #DC2626;
+  --dm-error-soft: rgba(220, 38, 38, 0.09);
+  --dm-warning: #D97706;
+  --dm-warning-soft: rgba(217, 119, 6, 0.10);
+  --dm-code-bg: #F4F5F7;
+  --dm-overlay: rgba(15, 17, 21, 0.45);
+  --dm-mark-bg: rgba(91, 108, 255, 0.16);
+  --dm-pdf-highlight: rgba(91, 108, 255, 0.22);
+  --dm-pdf-highlight-ring: rgba(91, 108, 255, 0.48);
+}
+
+.dark {
+  --dm-bg: #0F1115;
+  --dm-panel: #16181D;
+  --dm-raised: #1F2229;
+  --dm-raised-hover: #262A33;
+  --dm-border: #2A2D35;
+  --dm-border-strong: #373B46;
+  --dm-text: #E6E8EC;
+  --dm-text-secondary: #9AA0AB;
+  --dm-text-muted: #6C727F;
+  --dm-accent: #5B6CFF;
+  --dm-accent-hover: #4B5CF2;
+  --dm-accent-fg: #FFFFFF;
+  --dm-accent-soft: rgba(91, 108, 255, 0.15);
+  --dm-success: #22C55E;
+  --dm-success-soft: rgba(34, 197, 94, 0.12);
+  --dm-error: #EF4444;
+  --dm-error-soft: rgba(239, 68, 68, 0.12);
+  --dm-warning: #F59E0B;
+  --dm-warning-soft: rgba(245, 158, 11, 0.12);
+  --dm-code-bg: #13151A;
+  --dm-overlay: rgba(0, 0, 0, 0.60);
+  --dm-mark-bg: rgba(91, 108, 255, 0.24);
+  --dm-pdf-highlight: rgba(91, 108, 255, 0.28);
+  --dm-pdf-highlight-ring: rgba(91, 108, 255, 0.60);
+}
+
+@theme inline {
+  --color-surface: var(--dm-bg);
+  --color-panel: var(--dm-panel);
+  --color-raised: var(--dm-raised);
+  --color-raised-hover: var(--dm-raised-hover);
+  --color-line: var(--dm-border);
+  --color-line-strong: var(--dm-border-strong);
+  --color-ink: var(--dm-text);
+  --color-ink-secondary: var(--dm-text-secondary);
+  --color-ink-muted: var(--dm-text-muted);
+  --color-accent: var(--dm-accent);
+  --color-accent-hover: var(--dm-accent-hover);
+  --color-accent-fg: var(--dm-accent-fg);
+  --color-accent-soft: var(--dm-accent-soft);
+  --color-status-success: var(--dm-success);
+  --color-status-success-soft: var(--dm-success-soft);
+  --color-status-error: var(--dm-error);
+  --color-status-error-soft: var(--dm-error-soft);
+  --color-status-warning: var(--dm-warning);
+  --color-status-warning-soft: var(--dm-warning-soft);
+  --color-code: var(--dm-code-bg);
+  --color-overlay: var(--dm-overlay);
+  --color-mark: var(--dm-mark-bg);
+  --color-pdf-highlight: var(--dm-pdf-highlight);
+  --color-pdf-highlight-ring: var(--dm-pdf-highlight-ring);
+
+  --font-sans: 'Inter', 'Noto Sans Tamil', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    font-size: 14px;
+    background-color: var(--dm-bg);
+    color: var(--dm-text);
+  }
+
+  body {
+    font-size: 14px;
+    line-height: 1.55;
+    font-weight: 400;
+    background-color: var(--dm-bg);
+    color: var(--dm-text);
+  }
+
+  ::selection {
+    background-color: var(--dm-accent-soft);
+    color: var(--dm-text);
+  }
+
+  code, pre {
+    font-family: var(--font-mono);
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Minimal streaming cursor animation */
+@keyframes dm-cursor-blink {
+  0%, 49% {
+    opacity: 1;
+  }
+  50%, 100% {
+    opacity: 0;
+  }
+}
+
+.dm-streaming-cursor {
+  animation: dm-cursor-blink 1s steps(1) infinite;
+}
+
+/* Quiet scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dm-border-strong);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dm-text-muted);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
